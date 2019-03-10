@@ -1,0 +1,16 @@
+[Unit]
+Description=Shadowsocks Service Service
+After=network.target
+
+[Service]
+Type=forking
+User=root
+Group=root
+Restart=on-failure
+RestartSec=5s
+PIDFile={{shadowsocks_run_dir}}/ss-server-{{shadowsocks_ports.min}}.pid
+ExecStart={{shadowsocks_dir}}/bin/ss-server-wrapper
+ExecStop=/bin/kill -s QUIT $MAINPID
+
+[Install]
+WantedBy=multi-user.target

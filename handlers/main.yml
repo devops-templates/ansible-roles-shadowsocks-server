@@ -1,0 +1,21 @@
+- name: restart ss-server
+  systemd:
+    name: ss-server
+    state: restarted
+- name: start ss-server
+  systemd:
+    name: ss-server
+    state: started
+    enabled: yes
+- name: stop ss-server
+  systemd:
+    name: ss-server
+    state: stopped
+- name: daemon reload
+  systemd:
+    daemon_reload: yes
+- name: stop shadowsocks-libev
+  systemd:
+    name: shadowsocks-libev
+    state: stopped
+    enabled: no

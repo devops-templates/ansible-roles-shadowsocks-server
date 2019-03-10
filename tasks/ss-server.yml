@@ -1,0 +1,42 @@
+---
+- name: create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ shadowsocks_dir }}"
+    - "{{ shadowsocks_dir }}/bin"
+    - "{{ shadowsocks_dir }}/etc"
+    - "{{ shadowsocks_run_dir }}"
+
+- name: upload ss-server-wrapper script
+  template:
+    src: ss-server-wrapper.j2
+    dest: "{{ shadowsocks_dir }}/bin/ss-server-wrapper"
+    mode: 0755
+
+- name: upload ss-server systemd config
+  template:
+    src: ss-server.service.j2
+    dest: "{{ shadowsocks_dir }}/etc/ss-server.service"
+    mode: 0644
+  notify:
+    - daemon reload
+
+- name: create ss-server systemd config link
+  file:
+    src: "{{ shadowsocks_dir }}/etc/ss-server.service"
+    dest: "/etc/systemd/system/ss-server.service"
+    owner: root
+    group: root
+    mode: 0644
+    state: link
+  notify:
+    - restart ss-server
+
+- name: ensure that ss-server is started
+  service:
+    name: ss-server
+    state: started
+
+

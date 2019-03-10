@@ -1,0 +1,6 @@
+---
+shadowsocks_dir: /opt/shadowsocks
+shadowsocks_run_dir: /var/run/shadowsocks
+shadowsocks_ports:
+    min: 5000
+    max: 5009

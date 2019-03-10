@@ -1,0 +1,5 @@
+#!/bin/bash
+
+{% for port in range(shadowsocks_ports.min, shadowsocks_ports.max) %}
+ss-server -s 0.0.0.0 -p {{port}} -k {{shadowsocks_password}} -m {{shadowsocks_method}} -f {{shadowsocks_run_dir}}/ss-server-{{port}}.pid -u -v
+{% endfor %}
