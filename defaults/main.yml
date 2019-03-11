@@ -1,6 +1,6 @@
 ---
 ss_server_dir: /opt/ss-server
-ss_server_run_dir: {{ss_sever_dir}}/var/run
+ss_server_run_dir: "{{ ss_server_dir }}/var/run"
 ss_server_ports:
   begin: 5000
   end: 5009
