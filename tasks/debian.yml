@@ -1,10 +1,4 @@
 ---
-- name: add stretch-backports
-  apt_repository:
-      repo: deb http://deb.debian.org/debian stretch-backports main
-      filename: stretch-backports 
-      state: present
-
 - name: apt-get update
   apt:
     update_cache: yes
@@ -13,7 +7,6 @@
 - name: install shadowsocks-libev
   apt:
     name: shadowsocks-libev
-    default_release: stretch-backports
     state: present
   notify:
     - stop shadowsocks-libev

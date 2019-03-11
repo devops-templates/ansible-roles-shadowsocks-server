@@ -8,7 +8,7 @@ User=root
 Group=root
 Restart=on-failure
 RestartSec=5s
-PIDFile={{ss_server_run_dir}}/ss-server-{{ss_server_ports.min}}.pid
+PIDFile={{ss_server_run_dir}}/ss-server-{{ss_server_ports.begin}}.pid
 ExecStart={{ss_server_dir}}/bin/ss-server-wrapper
 ExecStop=/bin/kill -s QUIT $MAINPID
 
