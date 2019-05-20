@@ -26,6 +26,14 @@ None.
 
 ## Example Playbook
 
+Clone the project to a directory named `ss-server`:
+
+```shell
+git clone git@github.com:devops-templates/ansible-roles-shadowsocks-server.git ss-server
+```
+
+Move `hosts.example` and `ss-server.yml` to the same parent directory of `ss-server`:
+
 ```yaml
 ---
 - hosts: all
