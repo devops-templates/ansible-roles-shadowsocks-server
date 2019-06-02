@@ -4,7 +4,7 @@ An Ansible Role that installing Shadowsocks Server  on Linux
 
 ## Requirements
 
-Debian 9/Ubuntu 18.04/CentOS 7
+Debian 9/Ubuntu 18.04
 
 ## Role Variables
 
@@ -18,7 +18,7 @@ ss_server_ports:
   end: 9009
 ```
 
-This configuration will create 10 shadowsocks instances with the same method and password, and listening on port 9000 to 9009.
+This configuration will create 10 shadowsocks instances with the same method and password, and listening on port from 9000 to 9009(exclude).
 
 ## Dependencies
 
